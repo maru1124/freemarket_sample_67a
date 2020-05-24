@@ -1,7 +1,7 @@
 .header
   .center-box
     .center-box__top
-      =link_to "#", class: "image-link" do
+      =link_to root_path, class: "image-link" do
         =image_tag src="logo.svg", size: "140x40"
       %form.text-form{:action => "#", :method => "get"}
         %input.text-form__input{:type => "text", :placeholder => "キーワードから探す"}

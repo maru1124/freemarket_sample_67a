@@ -73,9 +73,25 @@
             font-weight: bold;
           }
         }
+        &__button{
+          margin: 20px 0;
+          background-color: mediumturquoise;  
+          text-align: center;
+          .buy-button{
+            height: 60px;
+            width: 100%;  
+            display: block;
+            line-height: 60px;
+            font-size: 26px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+          }
+        }
         &__text{
           font-size: 18px;
           margin-bottom: 30px;
+          word-break: break-all;
         }
         &__table{
           table{
@@ -122,6 +138,40 @@
               border-radius: 4px;
               padding: 8px 10px;  
             }
+          }
+        }
+      }
+      .edit-box{
+
+        margin: 20px 0;
+        padding: 20px 30px;
+        background-color: #fff;
+        &__edit{
+          height: 50px;
+          width: 100%;
+          line-height: 50px;
+          text-align: center;
+          background-color: mediumturquoise;
+          a{
+            display: block;
+            text-decoration: none;
+            color: #fff;
+          }
+        }
+        p{
+          text-align: center;
+          margin: 10px 0;
+        }
+        &__delete{
+          height: 50px;
+          width: 100%;
+          line-height: 50px;
+          text-align: center;
+          background-color: rgb(175, 175, 175);
+          a{
+            display: block;
+            text-decoration: none;
+            color: #fff;
           }
         }
       }

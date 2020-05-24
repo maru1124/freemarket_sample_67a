@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2020_04_29_142728) do
     t.string "city", null: false
     t.string "twon", null: false
     t.string "building"
-    t.string "prefeture", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,14 +29,8 @@ ActiveRecord::Schema.define(version: 2020_04_29_142728) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "catefgories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "clothes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "size", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,20 +48,19 @@ ActiveRecord::Schema.define(version: 2020_04_29_142728) do
     t.string "name", null: false
     t.string "price", null: false
     t.text "text", null: false
+    t.string "clothe"
     t.string "condition", null: false
-    t.string "shipping_area", null: false
+    t.string "day_to_ship", null: false
     t.string "shipping_method", null: false
     t.bigint "brand_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "postage_id"
-    t.bigint "clothe_id"
     t.bigint "sales_status_id"
     t.bigint "exhibition_commodity_id"
     t.bigint "purchase_commodity_id"
     t.bigint "shipping_charge_id"
     t.index ["brand_id"], name: "index_commodities_on_brand_id"
-    t.index ["clothe_id"], name: "index_commodities_on_clothe_id"
     t.index ["exhibition_commodity_id"], name: "index_commodities_on_exhibition_commodity_id"
     t.index ["postage_id"], name: "index_commodities_on_postage_id"
     t.index ["purchase_commodity_id"], name: "index_commodities_on_purchase_commodity_id"
@@ -77,10 +69,10 @@ ActiveRecord::Schema.define(version: 2020_04_29_142728) do
   end
 
   create_table "commodity_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "commodity_id", null: false
-    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "commodity_id"
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_commodity_categories_on_category_id"
     t.index ["commodity_id"], name: "index_commodity_categories_on_commodity_id"
   end
@@ -161,12 +153,13 @@ ActiveRecord::Schema.define(version: 2020_04_29_142728) do
   add_foreign_key "comments", "commodities"
   add_foreign_key "comments", "users"
   add_foreign_key "commodities", "brands"
-  add_foreign_key "commodities", "clothes"
   add_foreign_key "commodities", "postages"
   add_foreign_key "commodities", "sales_statuses"
   add_foreign_key "commodities", "shipping_charges"
   add_foreign_key "commodities", "users", column: "exhibition_commodity_id"
   add_foreign_key "commodities", "users", column: "purchase_commodity_id"
+  add_foreign_key "commodity_categories", "categories"
+  add_foreign_key "commodity_categories", "commodities"
   add_foreign_key "evaluations", "users"
   add_foreign_key "images", "commodities"
   add_foreign_key "likes", "commodities"
