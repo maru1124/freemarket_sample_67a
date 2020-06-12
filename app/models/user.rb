@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :commodities, dependent: :delete_all
   has_many :evaluations, dependent: :delete_all
   has_many :likes,       dependent: :delete_all
+  has_many :like_posts, through: :likes, source: :post
   has_many :commodities, through: :likes
   has_many :comments,    dependent: :delete_all
   has_many :commodities, through: :comments
